@@ -1,0 +1,47 @@
+/* GENERAL */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+}
+
+/* Variables */
+/*************/
+/* HEADER */
+header {
+  background-color: #f3e9f1;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 4rem;
+}
+header nav img.logo {
+  width: 14rem;
+  height: 7rem;
+}
+header nav ul.navigation {
+  display: flex;
+}
+header nav ul.navigation li {
+  list-style-type: none;
+  margin-right: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+header nav ul.navigation li a {
+  color: #000;
+  text-decoration: none;
+  transition: 0.2s;
+}
+header nav ul.navigation li a:hover {
+  color: #8f5bfe;
+  transition: 0.2s;
+}
+
+/* FOOTER */
+footer {
+  background-color: #f3e9f1;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,56 @@
+/* GENERAL */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+
+/* Variables */
+
+$primary-color: #f3e9f1;
+$secondary-color: #8f5bfe;
+
+/*************/
+
+
+/* HEADER */
+
+header {
+    background-color: $primary-color;
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 4rem;
+        img.logo {
+            width: 14rem;
+            height: 7rem;
+        }
+        ul.navigation {
+            display: flex;
+            li {
+                list-style-type: none;
+                margin-right: 1rem;
+                cursor: pointer;
+                transition: .2s;
+                a {
+                    color: #000;
+                    text-decoration: none;
+                    transition: .2s;
+                    &:hover {
+                        color: $secondary-color;
+                        transition: .2s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* FOOTER */
+
+footer {
+    background-color: $primary-color;
+}
