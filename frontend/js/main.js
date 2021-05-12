@@ -17,6 +17,12 @@ function getProducts() {
         })
 }
 
-function displayProducts() {
-    return ""
+function displayProducts(products) {
+    for (var i = 0; i < products.length; i++) {
+        var prods = document.createElement('div')
+        var title = document.createTextNode(products[i].name)
+        prods.appendChild(title)
+        var carts = document.getElementById('cards')
+        cards.insertAdjacentHTML('afterbegin', prods)
+    }
 }
