@@ -1,45 +1,26 @@
 /* GENERAL */
-
 body {
-    font-family: "Poppins", sans-serif;
-    margin: 0;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
 }
-
 
 /* Variables */
-
-
 /*************/
-
-
 /* HEADER */
-
 header {
-    background-color: #f3e9f1;
+  background-color: #f3e9f1;
 }
-
 header nav img {
-    width: 10rem;
-    height: 6rem;
+  height: 6rem;
+  width: 10rem;
 }
-
 header nav a {
-    color: #8f5bfe;
+  color: #8f5bfe;
 }
-
-
-/* Modifications Bootstrap */
-
-.navbar {
-    padding: 0 !important;
-}
-
 
 /* FOOTER */
-
 footer {
-    background-color: #f3e9f1;
+  background-color: #f3e9f1;
 }
-
 
 /*# sourceMappingURL=style.css.map */
