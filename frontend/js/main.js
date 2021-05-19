@@ -21,7 +21,6 @@ function displayProducts(products) {
     products.forEach(function(produit) {
         console.log(produit)
         let container = document.getElementById('container')
-        let cartes = document.createElement("section")
         let carte = document.createElement("div")
         let image = document.createElement("img")
         let titre = document.createElement("h3")
@@ -29,8 +28,7 @@ function displayProducts(products) {
         let prix = document.createElement("h4")
         let btn = document.createElement("a")
 
-        container.appendChild(cartes)
-        cartes.appendChild(carte)
+        container.appendChild(carte)
         carte.appendChild(image)
         carte.appendChild(titre)
         carte.appendChild(description)
@@ -38,7 +36,6 @@ function displayProducts(products) {
         carte.appendChild(btn)
 
 
-        cartes.setAttribute('class', 'cartes')
         carte.setAttribute('class', 'carte')
         image.setAttribute('class', 'image')
         titre.setAttribute('class', 'titre')
@@ -59,8 +56,6 @@ function displayProducts(products) {
         })
     })
 }
-
-displayProducts()
 
 
 

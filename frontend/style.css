@@ -1,10 +1,25 @@
 /* GENERAL */
+/* Variables */
+/****/
 body {
   font-family: "Poppins", sans-serif;
   margin: 0;
 }
 
-/* Variables */
+h1 {
+  font-family: "Poppins";
+  padding: 1rem 1rem 0 1rem;
+  width: max-content;
+}
+
+h1::after {
+  content: "";
+  background-color: #8f5bfe;
+  width: 100%;
+  height: 3px;
+  display: block;
+}
+
 /*************/
 /* HEADER */
 header {
@@ -16,6 +31,34 @@ header nav img {
 }
 header nav a {
   color: #8f5bfe;
+}
+
+/* PAGE CONTENT */
+.page-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#container {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 4rem auto 0 auto;
+}
+#container .carte {
+  margin: 0 1rem 1rem 1rem;
+  box-shadow: -1px -1px 20px -10px rgba(0, 0, 0, 0.49);
+  -webkit-box-shadow: -1px -1px 20px -10px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: -1px -1px 20px -10px rgba(0, 0, 0, 0.49);
+  width: 40%;
+  border-radius: 5px;
+  padding: 2rem;
 }
 
 /* FOOTER */
