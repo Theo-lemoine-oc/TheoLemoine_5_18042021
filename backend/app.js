@@ -13,7 +13,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static('images'));
+
+app.use('/images', express.static('images'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
