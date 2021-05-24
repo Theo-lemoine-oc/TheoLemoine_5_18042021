@@ -57,11 +57,32 @@ function displayProducts(products) {
         btn.textContent = "Voir produit"
 
         btn.addEventListener('click', function() {
-            btn.href = 'produit.html?id=' + produit._id + '&api=' + produit.api
-
+            btn.href = 'produit.html?id=' + produit._id
         })
+
+        console.log(produit._id)
     })
 }
+
+/*
+const searchId = new URL(window.location.href).searchParams.get("id")
+
+fetch(`http://localhost:3000/api//${searchId}`)
+    .then(response => {
+        console.log(response);
+        return response.json()
+    })
+    .then(data => {}*/
+
+
+
+/*
+idOurson = new URLSearchParams(window.location.search);
+let id = idOurson.get(idOurson);
+console.log(idOurson);
+
+let url = fetch("http://localhost:3000/api/teddies/_id")
+*/
 
 
 
