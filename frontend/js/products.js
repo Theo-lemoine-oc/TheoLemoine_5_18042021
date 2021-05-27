@@ -7,4 +7,15 @@ const searchId = new URLSearchParams(queryString_url_id)
 const productId = searchId.get("id")
 
 //Affichage du produit selon son ID
-let response = fetch(`http://localhost:3000/api/teddies/${productId}`)
+fetch(`http://localhost:3000/api/teddies/${productId}`)
+    .then((httpBodyResponse) => {
+        return httpBodyResponse.json()
+    })
+    .then((test) => {
+        console.log(test)
+        displayProducts([test])
+    })
+    // En cas d'erreur
+    .catch((error) => {
+        alert(error)
+    })
