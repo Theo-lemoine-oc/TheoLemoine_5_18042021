@@ -5,4 +5,6 @@ const queryString_url_id = window.location.search
 const searchId = new URLSearchParams(queryString_url_id)
 
 const productId = searchId.get("id")
-console.log(productId)
+
+//Affichage du produit selon son ID
+let response = fetch(`http://localhost:3000/api/teddies/${productId}`)
