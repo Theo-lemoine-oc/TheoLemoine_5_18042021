@@ -57,7 +57,7 @@ function displayProducts(products) {
         btn.textContent = "Voir produit"
 
         btn.addEventListener('click', function() {
-            btn.href = 'produit.html?id=' + produit._id
+            btn.href = 'pages/produit.html?id=' + produit._id
         })
 
         console.log(produit._id)
