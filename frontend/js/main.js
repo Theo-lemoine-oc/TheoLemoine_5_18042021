@@ -75,28 +75,3 @@ function displayProducts(products) {
         })
     })
 }
-
-
-
-
-
-
-/*
-const searchId = new URL(window.location.href).searchParams.get("id")
-
-fetch(`http://localhost:3000/api//${searchId}`)
-    .then(response => {
-        console.log(response);
-        return response.json()
-    })
-    .then(data => {}*/
-
-
-
-/*
-idOurson = new URLSearchParams(window.location.search);
-let id = idOurson.get(idOurson);
-console.log(idOurson);
-
-let url = fetch("http://localhost:3000/api/teddies/_id")
-*/
