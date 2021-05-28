@@ -47,71 +47,6 @@ header {
 }
 
 
-/* PAGE CONTENT */
-
-.page-content {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto
-}
-
-#container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    flex-direction: row;
-    margin: 4rem auto 0 auto;
-    .carte {
-        margin: 0 1rem 1rem 1rem;
-        box-shadow: -1px -1px 20px -10px rgba(0, 0, 0, 0.49);
-        -webkit-box-shadow: -1px -1px 20px -10px rgba(0, 0, 0, 0.49);
-        -moz-box-shadow: -1px -1px 20px -10px rgba(0, 0, 0, 0.49);
-        width: 45%;
-        border-radius: 5px;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        img {
-            width: 100%;
-            height: auto;
-        }
-        .content {
-            padding-top: 1rem;
-            .titre {
-                text-transform: uppercase;
-                font-size: 1.5rem;
-            }
-            .description {
-                color: #777;
-            }
-            .bottom-carte {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-top: 3rem;
-                .btn {
-                    background: linear-gradient(180deg, rgba(143, 91, 254, 1) 0%, rgba(143, 91, 254, 1) 50%, rgba(175, 91, 254, 1) 100%);
-                    color: #fff;
-                    text-transform: uppercase;
-                    font-weight: 600;
-                    border-radius: 10px;
-                    transition: .2s;
-                }
-                .btn:hover {
-                    transform: scale(1.05);
-                    transition: .2s;
-                }
-            }
-        }
-    }
-}
-
-
 /* FOOTER */
 
 footer {
@@ -119,5 +54,100 @@ footer {
     p {
         font-family: 'Lobster';
         font-size: 2.5rem;
+    }
+}
+
+
+/* PAGE CONTENT HOMEPAGE */
+
+.page-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    #container {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        flex-direction: row;
+        margin: 4rem auto 0 auto;
+        .carte {
+            margin: 0 1rem 1rem 1rem;
+            box-shadow: -1px -1px 20px -10px rgba(0, 0, 0, 0.49);
+            -webkit-box-shadow: -1px -1px 20px -10px rgba(0, 0, 0, 0.49);
+            -moz-box-shadow: -1px -1px 20px -10px rgba(0, 0, 0, 0.49);
+            width: 45%;
+            border-radius: 5px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            img {
+                width: 100%;
+                height: auto;
+            }
+            .content {
+                padding-top: 1rem;
+                .titre {
+                    text-transform: uppercase;
+                    font-size: 1.5rem;
+                }
+                .description {
+                    color: #777;
+                }
+                .bottom-carte {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-top: 3rem;
+                    .btn {
+                        background: linear-gradient(180deg, rgba(143, 91, 254, 1) 0%, rgba(143, 91, 254, 1) 50%, rgba(175, 91, 254, 1) 100%);
+                        color: #fff;
+                        text-transform: uppercase;
+                        font-weight: 600;
+                        border-radius: 10px;
+                        transition: .2s;
+                    }
+                    .btn:hover {
+                        transform: scale(1.05);
+                        transition: .2s;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* PAGE CONTENT PRODUCT PAGE */
+
+.product-content {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    .carte {
+        display: flex;
+        align-items: center;
+        img {
+            width: 60%;
+            height: auto;
+        }
+        .titre {
+            text-transform: uppercase;
+        }
+        .description {
+            color: #777;
+        }
+        .bottom-carte {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6rem;
+        }
     }
 }

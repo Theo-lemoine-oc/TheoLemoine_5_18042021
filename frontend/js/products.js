@@ -11,9 +11,8 @@ fetch(`http://localhost:3000/api/teddies/${productId}`)
     .then((httpBodyResponse) => {
         return httpBodyResponse.json()
     })
-    .then((test) => {
-        console.log(test)
-        displayProducts([test])
+    .then((product) => {
+        displayProduct([product])
     })
     // En cas d'erreur
     .catch((error) => {

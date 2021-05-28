@@ -33,7 +33,16 @@ header nav a {
   color: #8f5bfe;
 }
 
-/* PAGE CONTENT */
+/* FOOTER */
+footer {
+  background-color: #f3e9f1;
+}
+footer p {
+  font-family: "Lobster";
+  font-size: 2.5rem;
+}
+
+/* PAGE CONTENT HOMEPAGE */
 .page-content {
   display: flex;
   justify-content: center;
@@ -42,8 +51,7 @@ header nav a {
   max-width: 1200px;
   margin: 0 auto;
 }
-
-#container {
+.page-content #container {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -51,7 +59,7 @@ header nav a {
   flex-direction: row;
   margin: 4rem auto 0 auto;
 }
-#container .carte {
+.page-content #container .carte {
   margin: 0 1rem 1rem 1rem;
   box-shadow: -1px -1px 20px -10px rgba(0, 0, 0, 0.49);
   -webkit-box-shadow: -1px -1px 20px -10px rgba(0, 0, 0, 0.49);
@@ -63,27 +71,27 @@ header nav a {
   flex-direction: column;
   justify-content: space-between;
 }
-#container .carte img {
+.page-content #container .carte img {
   width: 100%;
   height: auto;
 }
-#container .carte .content {
+.page-content #container .carte .content {
   padding-top: 1rem;
 }
-#container .carte .content .titre {
+.page-content #container .carte .content .titre {
   text-transform: uppercase;
   font-size: 1.5rem;
 }
-#container .carte .content .description {
+.page-content #container .carte .content .description {
   color: #777;
 }
-#container .carte .content .bottom-carte {
+.page-content #container .carte .content .bottom-carte {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 3rem;
 }
-#container .carte .content .bottom-carte .btn {
+.page-content #container .carte .content .bottom-carte .btn {
   background: linear-gradient(180deg, #8f5bfe 0%, #8f5bfe 50%, #af5bfe 100%);
   color: #fff;
   text-transform: uppercase;
@@ -91,18 +99,38 @@ header nav a {
   border-radius: 10px;
   transition: 0.2s;
 }
-#container .carte .content .bottom-carte .btn:hover {
+.page-content #container .carte .content .bottom-carte .btn:hover {
   transform: scale(1.05);
   transition: 0.2s;
 }
 
-/* FOOTER */
-footer {
-  background-color: #f3e9f1;
+/* PAGE CONTENT PRODUCT PAGE */
+.product-content {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
 }
-footer p {
-  font-family: "Lobster";
-  font-size: 2.5rem;
+.product-content .carte {
+  display: flex;
+  align-items: center;
+}
+.product-content .carte img {
+  width: 60%;
+  height: auto;
+}
+.product-content .carte .titre {
+  text-transform: uppercase;
+}
+.product-content .carte .description {
+  color: #777;
+}
+.product-content .carte .bottom-carte {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6rem;
 }
 
 /*# sourceMappingURL=style.css.map */
