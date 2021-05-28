@@ -108,7 +108,7 @@ function displayProduct(products) {
          * page produit du produit séléctionné grâce à son ID
          */
         btn.addEventListener('click', function() {
-            btn.href = 'pages/produit.html?id=' + produit._id
+            btn.href = 'panier.html'
         })
     })
 }

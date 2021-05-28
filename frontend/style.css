@@ -108,7 +108,7 @@ footer p {
 .product-content {
   display: flex;
   justify-content: center;
-  margin: 0 auto;
+  margin: 4rem auto;
   width: 100%;
   max-width: 1200px;
 }
@@ -117,20 +117,35 @@ footer p {
   align-items: center;
 }
 .product-content .carte img {
-  width: 60%;
+  width: 40rem;
   height: auto;
 }
-.product-content .carte .titre {
+.product-content .carte .content {
+  margin-left: 4rem;
+}
+.product-content .carte .content .titre {
   text-transform: uppercase;
 }
-.product-content .carte .description {
+.product-content .carte .content .description {
   color: #777;
 }
-.product-content .carte .bottom-carte {
+.product-content .carte .content .bottom-carte {
+  margin-top: 6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 6rem;
+}
+.product-content .carte .content .bottom-carte .btn {
+  background: linear-gradient(180deg, #8f5bfe 0%, #8f5bfe 50%, #af5bfe 100%);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+.product-content .carte .content .bottom-carte .btn:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
 }
 
 /*# sourceMappingURL=style.css.map */

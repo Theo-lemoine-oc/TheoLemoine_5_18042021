@@ -127,27 +127,42 @@ footer {
 .product-content {
     display: flex;
     justify-content: center;
-    margin: 0 auto;
+    margin: 4rem auto;
     width: 100%;
     max-width: 1200px;
     .carte {
         display: flex;
         align-items: center;
         img {
-            width: 60%;
+            width: 40rem;
             height: auto;
         }
-        .titre {
-            text-transform: uppercase;
-        }
-        .description {
-            color: #777;
-        }
-        .bottom-carte {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 6rem;
+        .content {
+            margin-left: 4rem;
+            .titre {
+                text-transform: uppercase;
+            }
+            .description {
+                color: #777;
+            }
+            .bottom-carte {
+                margin-top: 6rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .btn {
+                    background: linear-gradient(180deg, rgba(143, 91, 254, 1) 0%, rgba(143, 91, 254, 1) 50%, rgba(175, 91, 254, 1) 100%);
+                    color: #fff;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    border-radius: 10px;
+                    transition: .2s;
+                }
+                .btn:hover {
+                    transform: scale(1.05);
+                    transition: .2s;
+                }
+            }
         }
     }
 }
