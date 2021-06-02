@@ -129,6 +129,10 @@ footer p {
 .product-content .carte .content .description {
   color: #777;
 }
+.product-content .carte .content form #select_color {
+  border-radius: 5px;
+  margin-left: 0.5rem;
+}
 .product-content .carte .content .bottom-carte {
   margin-top: 6rem;
   display: flex;

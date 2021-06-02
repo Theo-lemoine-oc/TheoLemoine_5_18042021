@@ -145,6 +145,12 @@ footer {
             .description {
                 color: #777;
             }
+            form {
+                #select_color {
+                    border-radius: 5px;
+                    margin-left: .5rem;
+                }
+            }
             .bottom-carte {
                 margin-top: 6rem;
                 display: flex;
