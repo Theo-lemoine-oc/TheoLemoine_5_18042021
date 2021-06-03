@@ -9,7 +9,7 @@ $secondary-color: #8f5bfe;
 /****/
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins' !important;
     margin: 0;
 }
 
@@ -176,4 +176,44 @@ footer {
 
 /* PAGE CONTENT BASKET PAGE */
 
-#basket-content {}
+.basket-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    h1 {
+        padding-left: 0;
+        margin-bottom: 2rem;
+    }
+    h2 {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+    }
+    #container {
+        border: #000 2px solid;
+        margin-bottom: 2rem;
+        .content {
+            p {
+                margin: 1rem;
+                a {
+                    margin-left: 1rem;
+                    text-decoration: none;
+                }
+            }
+        }
+        .total-amount {
+            padding-top: 1rem;
+            border-top: #000 2px solid;
+            a {
+                margin-left: 1rem;
+                text-decoration: none;
+                color: $secondary-color;
+            }
+             :hover {
+                color: darken($color: $secondary-color, $amount: 25);
+            }
+        }
+    }
+}

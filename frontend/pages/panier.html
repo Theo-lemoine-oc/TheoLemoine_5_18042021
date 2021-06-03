@@ -10,7 +10,10 @@
 
     <!-- JavaScript -->
     <script src="../js/function.js" defer></script>
-    <script src="../js/products.js" defer></script>
+    <script src="../js/panier.js" defer></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -30,7 +33,7 @@
                     <a href="../index.html" class="nav-link px-3">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Panier</a>
+                    <a href="panier.html" class="nav-link">Panier</a>
                 </li>
             </ul>
         </nav>
@@ -39,9 +42,21 @@
 
     <!-- MAIN PAGE CONTENT -->
     <main>
-        <section class="product-content">
+        <section class="basket-content">
+            <h1>Panier</h1>
+            <h2>Les produits que vous avez sélectionnez :</h2>
             <!-- Products -->
-            <div id="container"></div>
+            <div id="container">
+                <div class="content d-flex justify-content-between">
+                    <p>Quantité 1 - nom produit 1</p>
+                    <p>190 € <a href="#"><i class="fas fa-trash-alt text-danger"></i></a></p>
+                </div>
+
+                <div class="total-amount d-flex justify-content-center">
+                    <p>Montant total = 190 €</p>
+                    <a href="#">Vider le panier</a>
+                </div>
+            </div>
         </section>
     </main>
 

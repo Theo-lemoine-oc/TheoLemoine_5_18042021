@@ -2,7 +2,7 @@
 /* Variables */
 /****/
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins" !important;
   margin: 0;
 }
 
@@ -150,6 +150,47 @@ footer p {
 .product-content .carte .content .bottom-carte .btn:hover {
   transform: scale(1.05);
   transition: 0.2s;
+}
+
+/* PAGE CONTENT BASKET PAGE */
+.basket-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.basket-content h1 {
+  padding-left: 0;
+  margin-bottom: 2rem;
+}
+.basket-content h2 {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+.basket-content #container {
+  border: #000 2px solid;
+  margin-bottom: 2rem;
+}
+.basket-content #container .content p {
+  margin: 1rem;
+}
+.basket-content #container .content p a {
+  margin-left: 1rem;
+  text-decoration: none;
+}
+.basket-content #container .total-amount {
+  padding-top: 1rem;
+  border-top: #000 2px solid;
+}
+.basket-content #container .total-amount a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #8f5bfe;
+}
+.basket-content #container .total-amount :hover {
+  color: #4601d8;
 }
 
 /*# sourceMappingURL=style.css.map */

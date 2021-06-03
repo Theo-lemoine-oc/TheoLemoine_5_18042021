@@ -114,9 +114,47 @@ function displayProduct(products) {
                 quantite: 1,
                 prix: produit.price + "€"
             }
-            console.log(optionProduct)
 
+
+            //------------------ Le Local Storage ------------------//
+            //Stocker la récupération des valeurs du formulaire dans le local storage
+
+            //Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle nous mettons les keys et les values qui sont dans le local storage
+            let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit"))
+                //JSON.parse pour convertir les données au format JSON qui sont dans le local storage en objet JavaScript
+
+            //Fonction qui permet d'ajouter un produit sélectionné dans le localStorage
+            const ajoutProduitLocalStorage = () => {
+                //Ajout dans le tableau de l'objet avec les values choisis par l'utilisateur
+                produitEnregistreDansLocalStorage.push(optionProduct)
+
+                //Transformation en format JSON et l'envoyer dans la key "produit" du localStorage
+                localStorage.setItem("produit", JSON.stringify(produitEnregistreDansLocalStorage))
+            }
+
+            //Fonction fenêtre pop up
+            const popupConfirmation = () => {
+                if (window.confirm(`Vous avez bien ajouté ${produit.name} avec la couleur ${choiceColor} dans votre panier !
+Consulter le panier OK ou revenir à l'accueil ANNULER`)) {
+                    window.location.href = "../pages/panier.html"
+                } else {
+                    window.location.href = "../index.html"
+                }
+            }
+
+            //S'il y'a déjà des produits enregistrés dans le local storage
+            if (produitEnregistreDansLocalStorage) {
+                ajoutProduitLocalStorage()
+                popupConfirmation()
+                console.log(produitEnregistreDansLocalStorage)
+            }
+            //S'il n'y a pas de produit d'enregistré dans le local storage
+            else {
+                produitEnregistreDansLocalStorage = []
+                ajoutProduitLocalStorage()
+                popupConfirmation()
+                console.log(produitEnregistreDansLocalStorage)
+            }
         })
-
     })
 }
