@@ -210,12 +210,17 @@ footer {
         .total-amount {
             padding-top: 1rem;
             border-top: #000 2px solid;
-            a {
+            p {
+                margin: 0;
+            }
+            button {
                 margin-left: 1rem;
                 text-decoration: none;
                 color: $secondary-color;
+                border: none;
+                background-color: transparent;
             }
-            a:hover {
+            button:hover {
                 color: darken($color: $secondary-color, $amount: 25);
             }
         }

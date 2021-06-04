@@ -41,7 +41,7 @@ if (produitEnregistreDansLocalStorage === null || produitEnregistreDansLocalStor
 let btnDelete = document.querySelectorAll(".product-delete")
 
 for (let d = 0; d < btnDelete.length; d++) {
-    btnDelete[d].addEventListener("click", (e) => {
+    btnDelete[d].addEventListener('click', (e) => {
         e.preventDefault()
 
         //Sélection de l'ID du produit qui sera supprimé à chaque fois qu'un utilisateur appuie sur l'icone supprimer
@@ -59,3 +59,42 @@ for (let d = 0; d < btnDelete.length; d++) {
         window.location.href = "../pages/panier.html"
     })
 }
+
+
+
+//---------------- Bouton pour vider entièrement le panier ----------------//
+//Le code HTML du bouton à afficher dans la page
+const btnDeleteAll = `
+    <div class="total-amount d-flex justify-content-center">
+        <p>Montant total = 190 €</p>
+        <button class="product-delete-all">Vider le panier</button>
+    </div>
+`
+
+//Insertion du bouton dans le HTML du panier
+containerBasket.insertAdjacentHTML("beforeend", btnDeleteAll)
+
+//Sélection de la référence du bouton "product-delete-all"
+const productDeleteAll = document.querySelector(".product-delete-all")
+
+//Suppression de la key "produit" du localStorage pour vider entièrement le panier
+productDeleteAll.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    //Si le panier possède un ou plusieurs produits : On le vide quand l'utilisateur clique sur le bouton pour le vider
+    if (produitEnregistreDansLocalStorage) {
+        //.removeItem pour vider le localStorage
+        localStorage.removeItem("produit")
+
+        //Alert "Le panier a été vidé !"
+        alert("Le panier a été vidé !")
+
+        //Rechargement de la page panier
+        window.location.href = "../pages/panier.html"
+
+    }
+    //Si le panier est déjà vide, on prévient l'utilisateur qu'il ne peut pas le vider
+    else {
+        alert("Votre panier est déjà vide !")
+    }
+})

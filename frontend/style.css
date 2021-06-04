@@ -188,12 +188,17 @@ footer p {
   padding-top: 1rem;
   border-top: #000 2px solid;
 }
-.basket-content #container .total-amount a {
+.basket-content #container .total-amount p {
+  margin: 0;
+}
+.basket-content #container .total-amount button {
   margin-left: 1rem;
   text-decoration: none;
   color: #8f5bfe;
+  border: none;
+  background-color: transparent;
 }
-.basket-content #container .total-amount a:hover {
+.basket-content #container .total-amount button:hover {
   color: #4601d8;
 }
 

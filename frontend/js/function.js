@@ -99,7 +99,7 @@ function displayProduct(products) {
         const idForm = document.querySelector("#select_color")
 
         //Envoyer le panier
-        btn.addEventListener("click", (e) => {
+        btn.addEventListener('click', (e) => {
             e.preventDefault()
 
             //Mettre la couleur que l'utilisateur a choisi dans une variable
@@ -109,7 +109,6 @@ function displayProduct(products) {
             let optionProduct = {
                 id_Product: produit._id,
                 nameProduct: produit.name,
-                imgProduct: produit.imageUrl,
                 select_color: choiceColor,
                 quantite: 1,
                 prix: produit.price + "€"
