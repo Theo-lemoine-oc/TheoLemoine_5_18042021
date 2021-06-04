@@ -196,9 +196,11 @@ footer {
         .content {
             p {
                 margin: 1rem;
-                a {
+                button {
                     margin-left: 1rem;
                     text-decoration: none;
+                    border: none;
+                    background-color: transparent;
                 }
             }
         }

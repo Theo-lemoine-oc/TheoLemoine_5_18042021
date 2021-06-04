@@ -8,7 +8,7 @@ let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit
 const containerBasket = document.querySelector("#container")
 
 //Si le panier est vide : il faut afficher le panier est vide
-if (produitEnregistreDansLocalStorage === null) {
+if (produitEnregistreDansLocalStorage === null || produitEnregistreDansLocalStorage == 0) {
     const emptyBasket = `
     <div class="container-empty-basket">
         <p>Votre panier est vide</p>
@@ -24,7 +24,7 @@ if (produitEnregistreDansLocalStorage === null) {
         basketStructure = basketStructure + `
         <div class="content d-flex justify-content-between">
             <p>${produitEnregistreDansLocalStorage[b].nameProduct} (1) | Couleur : ${produitEnregistreDansLocalStorage[b].select_color}</p>
-            <p>${produitEnregistreDansLocalStorage[b].prix} <a href="#"><i class="fas fa-trash-alt text-danger"></i></a></p>
+            <p>${produitEnregistreDansLocalStorage[b].prix} <button class="product-delete"><i class="fas fa-trash-alt text-danger"></i></button</p>
         </div>
         `
     }
@@ -32,4 +32,30 @@ if (produitEnregistreDansLocalStorage === null) {
         //Injection du HTML dans la page panier
         containerBasket.innerHTML = basketStructure
     }
+}
+
+
+
+//------------- Gestion du boutton : Supprimer l'article ------------//
+//Sélection des références de tous les boutons product-delete
+let btnDelete = document.querySelectorAll(".product-delete")
+
+for (let d = 0; d < btnDelete.length; d++) {
+    btnDelete[d].addEventListener("click", (e) => {
+        e.preventDefault()
+
+        //Sélection de l'ID du produit qui sera supprimé à chaque fois qu'un utilisateur appuie sur l'icone supprimer
+        let idDelete = produitEnregistreDansLocalStorage[d].id_Product
+
+        //Méthode filter pour sélectionner les éléments à garder et supprimer l'élément où le btn delete a été cliqué
+        produitEnregistreDansLocalStorage = produitEnregistreDansLocalStorage.filter(el => el.id_Product != idDelete)
+
+        //Envoie de la variable dans le localStorage  
+        //Transformation en format JSON et l'envoyer dans la key "produit" du localStorage
+        localStorage.setItem("produit", JSON.stringify(produitEnregistreDansLocalStorage))
+
+        //Alert pour avertir que le produit a été supprimé et rechargement de la page
+        alert("Ce produit a bien été supprimé du panier !")
+        window.location.href = "../pages/panier.html"
+    })
 }

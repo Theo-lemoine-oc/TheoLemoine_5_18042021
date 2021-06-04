@@ -175,9 +175,11 @@ footer p {
 .basket-content #container .content p {
   margin: 1rem;
 }
-.basket-content #container .content p a {
+.basket-content #container .content p button {
   margin-left: 1rem;
   text-decoration: none;
+  border: none;
+  background-color: transparent;
 }
 .basket-content #container .content:nth-child(even) {
   background-color: #e7e7e7;
