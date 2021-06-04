@@ -179,6 +179,9 @@ footer p {
   margin-left: 1rem;
   text-decoration: none;
 }
+.basket-content #container .content:nth-child(even) {
+  background-color: #e7e7e7;
+}
 .basket-content #container .total-amount {
   padding-top: 1rem;
   border-top: #000 2px solid;

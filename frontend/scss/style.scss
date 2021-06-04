@@ -202,6 +202,9 @@ footer {
                 }
             }
         }
+        .content:nth-child(even) {
+            background-color: #e7e7e7;
+        }
         .total-amount {
             padding-top: 1rem;
             border-top: #000 2px solid;
