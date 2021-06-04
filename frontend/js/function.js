@@ -39,7 +39,7 @@ function displayProducts(products) {
          */
         titre.textContent = produit.name;
         description.textContent = produit.description;
-        prix.textContent = "Prix: " + produit.price + "€";
+        prix.textContent = "Prix: " + produit.price + " €";
         image.src = produit.imageUrl;
         btn.textContent = "Voir produit"
 
@@ -85,7 +85,7 @@ function displayProduct(products) {
         }
 
         //Affichage du prix et de l'image ainsi que du bouton d'ajout au panier
-        prix.textContent = "Prix: " + produit.price + "€";
+        prix.textContent = "Prix: " + produit.price + " €";
         image.src = produit.imageUrl;
         image.alt = "Image du produit " + produit.name
         btn.textContent = "Ajouter au panier"
@@ -111,7 +111,7 @@ function displayProduct(products) {
                 nameProduct: produit.name,
                 select_color: choiceColor,
                 quantite: 1,
-                prix: produit.price + "€"
+                prix: produit.price
             }
 
 

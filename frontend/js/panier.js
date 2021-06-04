@@ -24,7 +24,7 @@ if (produitEnregistreDansLocalStorage === null || produitEnregistreDansLocalStor
         basketStructure = basketStructure + `
         <div class="content d-flex justify-content-between">
             <p>${produitEnregistreDansLocalStorage[b].nameProduct} (1) | Couleur : ${produitEnregistreDansLocalStorage[b].select_color}</p>
-            <p>${produitEnregistreDansLocalStorage[b].prix} <button class="product-delete"><i class="fas fa-trash-alt text-danger"></i></button</p>
+            <p>${produitEnregistreDansLocalStorage[b].prix} € <button class="product-delete"><i class="fas fa-trash-alt text-danger"></i></button</p>
         </div>
         `
     }
@@ -66,7 +66,7 @@ for (let d = 0; d < btnDelete.length; d++) {
 //Le code HTML du bouton à afficher dans la page
 const btnDeleteAll = `
     <div class="total-amount d-flex justify-content-center">
-        <p>Montant total = 190 €</p>
+        <p></p>
         <button class="product-delete-all">Vider le panier</button>
     </div>
 `
@@ -98,3 +98,28 @@ productDeleteAll.addEventListener('click', (e) => {
         alert("Votre panier est déjà vide !")
     }
 })
+
+
+
+//---------------- Calcule du montant total du panier ----------------//
+//Déclaration de la variable pour pouvoir y mettre les prix qui sont présents dans le panier
+let totalPriceCalcul = []
+
+//Aller chercher les prix dans le panier
+for (let t = 0; t < produitEnregistreDansLocalStorage.length; t++) {
+    let totalPriceBasket = produitEnregistreDansLocalStorage[t].prix
+
+    //Mettre les prix du panier dans la variable "totalPriceCalcul"
+    totalPriceCalcul.push(totalPriceBasket)
+}
+
+//Additionner les prix qu'il y a dans le tableau de la variable "totalPriceCalcul" avec la méthode .reduce
+const reducer = (accumulator, currentValue) => accumulator + currentValue
+const totalPrice = totalPriceCalcul.reduce(reducer, 0)
+console.log(totalPrice)
+
+//Sélection de la classe où je vais injecter le code HTML du prix total
+const totalAmount = document.querySelector(".total-amount p")
+
+//Le code HTML du prix total à afficher et injection
+totalAmount.textContent = "Montant total : " + totalPrice + " €";
