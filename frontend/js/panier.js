@@ -7,7 +7,7 @@ let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit
 //Sélection de la classe où je vais injecter le code HTML
 const containerBasket = document.querySelector("#container")
 
-//Si le panier est vide : afficher le panier est vide
+//Si le panier est vide : il faut afficher le panier est vide
 if (produitEnregistreDansLocalStorage === null) {
     const emptyBasket = `
     <div class="container-empty-basket">
@@ -17,5 +17,19 @@ if (produitEnregistreDansLocalStorage === null) {
     containerBasket.innerHTML = emptyBasket
 
 } else {
+    //Si le panier n'est pas vide : il faut afficher les produits dans le localStorage
+    let basketStructure = []
 
+    for (b = 0; b < produitEnregistreDansLocalStorage.length; b++) {
+        basketStructure = basketStructure + `
+        <div class="content d-flex justify-content-between">
+            <p>${produitEnregistreDansLocalStorage[b].nameProduct} (1) | Couleur : ${produitEnregistreDansLocalStorage[b].select_color}</p>
+            <p>${produitEnregistreDansLocalStorage[b].prix} <a href="#"><i class="fas fa-trash-alt text-danger"></i></a></p>
+        </div>
+        `
+    }
+    if (b == produitEnregistreDansLocalStorage.length) {
+        //Injection du HTML dans la page panier
+        containerBasket.innerHTML = basketStructure
+    }
 }

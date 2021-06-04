@@ -135,7 +135,9 @@ function displayProduct(products) {
             //Fonction fenêtre pop up
             const popupConfirmation = () => {
                 if (window.confirm(`Vous avez bien ajouté ${produit.name} avec la couleur ${choiceColor} dans votre panier !
-Consulter le panier OK ou revenir à l'accueil ANNULER`)) {
+
+Consulter le panier : OK
+Revenir à l'accueil : ANNULER`)) {
                     window.location.href = "../pages/panier.html"
                 } else {
                     window.location.href = "../index.html"
