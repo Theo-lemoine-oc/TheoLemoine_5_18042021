@@ -210,7 +210,7 @@ footer {
                 text-decoration: none;
                 color: $secondary-color;
             }
-             :hover {
+            a:hover {
                 color: darken($color: $secondary-color, $amount: 25);
             }
         }

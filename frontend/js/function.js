@@ -146,14 +146,12 @@ Consulter le panier OK ou revenir à l'accueil ANNULER`)) {
             if (produitEnregistreDansLocalStorage) {
                 ajoutProduitLocalStorage()
                 popupConfirmation()
-                console.log(produitEnregistreDansLocalStorage)
             }
             //S'il n'y a pas de produit d'enregistré dans le local storage
             else {
                 produitEnregistreDansLocalStorage = []
                 ajoutProduitLocalStorage()
                 popupConfirmation()
-                console.log(produitEnregistreDansLocalStorage)
             }
         })
     })

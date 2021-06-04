@@ -188,7 +188,7 @@ footer p {
   text-decoration: none;
   color: #8f5bfe;
 }
-.basket-content #container .total-amount :hover {
+.basket-content #container .total-amount a:hover {
   color: #4601d8;
 }
 
