@@ -219,9 +219,9 @@ footer {
                 color: $secondary-color;
                 border: none;
                 background-color: transparent;
-            }
-            button:hover {
-                color: darken($color: $secondary-color, $amount: 25);
+                &:hover {
+                    color: darken($color: $secondary-color, $amount: 25);
+                }
             }
         }
     }

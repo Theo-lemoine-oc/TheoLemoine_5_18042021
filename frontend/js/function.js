@@ -143,12 +143,12 @@ Revenir à l'accueil : ANNULER`)) {
                 }
             }
 
-            //S'il y'a déjà des produits enregistrés dans le local storage
+            //S'il y'a déjà des produits enregistrés dans le localStorage
             if (produitEnregistreDansLocalStorage) {
                 ajoutProduitLocalStorage()
                 popupConfirmation()
             }
-            //S'il n'y a pas de produit d'enregistré dans le local storage
+            //S'il n'y a pas de produit d'enregistré dans le localStorage
             else {
                 produitEnregistreDansLocalStorage = []
                 ajoutProduitLocalStorage()

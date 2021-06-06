@@ -32,6 +32,10 @@ if (produitEnregistreDansLocalStorage === null || produitEnregistreDansLocalStor
         //Injection du HTML dans la page panier
         containerBasket.innerHTML = basketStructure
     }
+
+    //Ajout du titre de la page des paniers indiquant le nombre de produits dans le panier
+    basketTitle = document.getElementById("basket-title")
+    basketTitle.textContent = "Les produits que vous avez sélectionnez (" + produitEnregistreDansLocalStorage.length + ") :"
 }
 
 
@@ -116,7 +120,6 @@ for (let t = 0; t < produitEnregistreDansLocalStorage.length; t++) {
 //Additionner les prix qu'il y a dans le tableau de la variable "totalPriceCalcul" avec la méthode .reduce
 const reducer = (accumulator, currentValue) => accumulator + currentValue
 const totalPrice = totalPriceCalcul.reduce(reducer, 0)
-console.log(totalPrice)
 
 //Sélection de la classe où je vais injecter le code HTML du prix total
 const totalAmount = document.querySelector(".total-amount p")
