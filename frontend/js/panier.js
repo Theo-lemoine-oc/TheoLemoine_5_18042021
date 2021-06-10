@@ -54,9 +54,15 @@ for (let d = 0; d < btnDelete.length; d++) {
         //Méthode filter pour sélectionner les éléments à garder et supprimer l'élément où le btn delete a été cliqué
         produitEnregistreDansLocalStorage = produitEnregistreDansLocalStorage.filter(el => el.id_Product != idDelete)
 
-        //Envoie de la variable dans le localStorage  
-        //Transformation en format JSON et l'envoyer dans la key "produit" du localStorage
-        localStorage.setItem("produit", JSON.stringify(produitEnregistreDansLocalStorage))
+        //S'il y a qu'un produit dans le panier, ça vide directement le panier, s'il y en a plus, ça supprime le produit sélectionné et non le sautres
+        if (produitEnregistreDansLocalStorage.length < 1) {
+            //Vider le panier
+            localStorage.removeItem("produit")
+        } else {
+            //Envoie de la variable dans le localStorage  
+            //Transformation en format JSON et l'envoyer dans la key "produit" du localStorage
+            localStorage.setItem("produit", JSON.stringify(produitEnregistreDansLocalStorage))
+        }
 
         //Alert pour avertir que le produit a été supprimé et rechargement de la page
         alert("Ce produit a bien été supprimé du panier !")
@@ -126,3 +132,83 @@ const totalAmount = document.querySelector(".total-amount p")
 
 //Le code HTML du prix total à afficher et injection
 totalAmount.textContent = "Montant total : " + totalPrice + " €";
+
+
+
+
+
+//---------------- Formulaire de confirmation de paiement ----------------//
+const afficherFormulaireHtml = () => {
+    const structureFormulaire = `
+        <secton class="form">
+            <div class="form-command">
+                <h2>Remplissez le formulaire pour valider la commande</h2>
+
+                <form>
+                    <label for="prenom" class="d-flex flex-column">Prénom</label>
+                    <input type="text" id="prenom" name="prenom" required>
+
+                    <label for="nom" class="d-flex flex-column">Nom</label>
+                    <input type="text" id="nom" name="nom" required>
+
+                    <label for="adresse" class="d-flex flex-column">Adresse</label>
+                    <input type="text" id="adresse" name="adresse" required>
+
+                    <label for="ville" class="d-flex flex-column">Ville</label>
+                    <input type="text" id="ville" name="ville" required>
+
+                    <label for="codePostal" class="d-flex flex-column">Code postal</label>
+                    <input type="text" id="codePostal" name="codePostal" required>
+
+                    <label for="email" class="d-flex flex-column">E-mail</label>
+                    <input type="text" id="email" name="email" required>
+
+                    <button id="sendForm" type="submit" name="sendForm" class="d-flex flex-column">
+                        Confirmation de la commande
+                    </button>
+                </form>
+            </div>
+        </secton>
+    `
+
+    //Injection de l'HTML dans la page panier
+    containerBasket.insertAdjacentHTML("afterend", structureFormulaire)
+}
+
+//Affichage du formulaire
+afficherFormulaireHtml()
+
+//Sélection du bouton Envoyer le formulaire
+const btnEnvoyerFormulaire = document.querySelector("#sendForm")
+
+//AddEventListener
+btnEnvoyerFormulaire.addEventListener('click', (e) => {
+    e.preventDefault()
+
+    //Récupération des valeurs du formulaire pour les mettre dans le localStorage
+    localStorage.setItem("prenom", document.querySelector("#prenom").value)
+    localStorage.setItem("nom", document.querySelector("#nom").value)
+    localStorage.setItem("adresse", document.querySelector("#adresse").value)
+    localStorage.setItem("ville", document.querySelector("#ville").value)
+    localStorage.setItem("codePostal", document.querySelector("#codePostal").value)
+    localStorage.setItem("email", document.querySelector("#email").value)
+
+    //Mettre les values du formulaie dans un objet
+    const formulaire = {
+        prenom: localStorage.getItem("prenom"),
+        nom: localStorage.getItem("nom"),
+        adresse: localStorage.getItem("adresse"),
+        ville: localStorage.getItem("ville"),
+        codePostal: localStorage.getItem("codePostal"),
+        email: localStorage.getItem("email")
+    }
+
+    //Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer vers le serveur
+    const aEnvoyer = {
+        produitEnregistreDansLocalStorage,
+        formulaire
+    }
+
+    //Envoie de l'objet "aEnvoyer" vers le serveur
+
+})
