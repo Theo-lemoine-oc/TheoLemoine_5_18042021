@@ -185,28 +185,23 @@ const btnEnvoyerFormulaire = document.querySelector("#sendForm")
 btnEnvoyerFormulaire.addEventListener('click', (e) => {
     e.preventDefault()
 
-    //Récupération des valeurs du formulaire pour les mettre dans le localStorage
-    localStorage.setItem("prenom", document.querySelector("#prenom").value)
-    localStorage.setItem("nom", document.querySelector("#nom").value)
-    localStorage.setItem("adresse", document.querySelector("#adresse").value)
-    localStorage.setItem("ville", document.querySelector("#ville").value)
-    localStorage.setItem("codePostal", document.querySelector("#codePostal").value)
-    localStorage.setItem("email", document.querySelector("#email").value)
-
-    //Mettre les values du formulaie dans un objet
-    const formulaire = {
-        prenom: localStorage.getItem("prenom"),
-        nom: localStorage.getItem("nom"),
-        adresse: localStorage.getItem("adresse"),
-        ville: localStorage.getItem("ville"),
-        codePostal: localStorage.getItem("codePostal"),
-        email: localStorage.getItem("email")
+    //Récupération des values du formulaire
+    const formulaireValues = {
+        prenom: document.querySelector("#prenom").value,
+        nom: document.querySelector("#nom").value,
+        adresse: document.querySelector("#adresse").value,
+        ville: document.querySelector("#ville").value,
+        codePostal: document.querySelector("#codePostal").value,
+        email: document.querySelector("#email").value
     }
+
+    //Mettre l'objet "formulaireValues" dans le localStorage
+    localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues))
 
     //Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer vers le serveur
     const aEnvoyer = {
         produitEnregistreDansLocalStorage,
-        formulaire
+        formulaireValues
     }
 
     //Envoie de l'objet "aEnvoyer" vers le serveur
