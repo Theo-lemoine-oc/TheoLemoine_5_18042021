@@ -200,8 +200,114 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     //Appel de l'instance de la classe Formulaire pour créer l'objet formulaireValues
     const formulaireValues = new Formulaire()
 
-    //Mettre l'objet "formulaireValues" dans le localStorage
-    localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues))
+
+    //---------------- Gestion de la validation du formulaire ----------------//
+    //Message d'erreur en cas de non validité
+    const errorAlert = (value) => {
+        return `${value} n'est pas bien saisi !\n\nLes chiffres et les symboles ne sont pas autorisés !\nLe prénom doit faire entre 3 et 40 caractères"`
+    }
+
+    //Regex pour controler le prénom, le nom et la ville
+    const regExPrenomNonVille = (value) => {
+        return /^[A-Za-zéèöô]{3,40}$/.test(value)
+    }
+
+    //Regex pour controler le code postale
+    const regExCodePostal = (value) => {
+        return /^[0-9]{5}$/.test(value)
+    }
+
+    //Regex pour controler l'adresse E-mail
+    const regExEmail = (value) => {
+        return /^[0-9a-z._-]+@{1}[0-9a-z.-]{2,}[.]{1}[a-z]{2,5}$/.test(value)
+    }
+
+    //Regex pour controler l'adresse
+    const regExAdresse = (value) => {
+        return /^[A-Za-z0-9\s-éè]{5,50}$/.test(value)
+    }
+
+    //Contrôle de la validité du prénom avec REGEX
+    function prenomControle() {
+        const lePrenom = formulaireValues.prenom
+        if (regExPrenomNonVille(lePrenom)) {
+            return true
+        } else {
+            alert(errorAlert("Prénom"))
+            return false
+        }
+    }
+
+    //Contrôle de la validité du nom avec REGEX
+    function nomControle() {
+        //Contrôle de la validité du nom avec REGEX
+        const leNom = formulaireValues.nom
+        if (regExPrenomNonVille(leNom)) {
+            return true
+        } else {
+            alert(errorAlert("Nom"))
+            return false
+        }
+    }
+
+    //Contrôle de la validité de la ville avec REGEX
+    function villeControle() {
+        //Contrôle de la validité du nom avec REGEX
+        const laVille = formulaireValues.ville
+        if (regExPrenomNonVille(laVille)) {
+            return true
+        } else {
+            alert(errorAlert("Ville"))
+            return false
+        }
+    }
+
+
+    //Contrôle de la validité du code postale avec REGEX
+    function codePostalControle() {
+        const leCodePostal = formulaireValues.codePostal
+        if (regExCodePostal(leCodePostal)) {
+            return true
+        } else {
+            alert("Le code postal doit être composé de 5 chiffres !")
+            return false
+        }
+    }
+
+    //Contrôle de la validité du mail avec REGEX
+    function emailControle() {
+        const leEmail = formulaireValues.email
+        if (regExEmail(leEmail)) {
+            return true
+        } else {
+            alert("L'email n'est pas valide !")
+            return false
+        }
+    }
+
+    //Contrôle de la validité de l'adresse avec REGEX
+    function adresseControle() {
+        const leAdresse = formulaireValues.adresse
+        if (regExAdresse(leAdresse)) {
+            return true
+        } else {
+            alert("L'adresse doit contenir que des lettres sans ponctuations et des chiffres !")
+            return false
+        }
+    }
+
+    //Si le champ est valide selon le Regex : On envoie dans le localStorage
+    if (prenomControle() && nomControle() && villeControle() && codePostalControle() && emailControle() && adresseControle()) {
+        //Mettre l'objet "formulaireValues" dans le localStorage
+        localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues))
+    }
+    //Sinon on envoie pas et informe l'utilisateur
+    else {
+        alert("Veuillez bien remplir le formulaire !")
+        window.location.href = "../pages/panier.html"
+    }
+    //--------------- Fin de la gestion de la validation du formulaire ---------------//
+
 
     //Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer vers le serveur
     const aEnvoyer = {
