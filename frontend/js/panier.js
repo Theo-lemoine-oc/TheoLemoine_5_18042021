@@ -212,3 +212,22 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     //Envoie de l'objet "aEnvoyer" vers le serveur
 
 })
+
+//---------------- Mettre le contenu du localStorage dans les champs du formulaire ----------------//
+//Prendre la key dans le localStorage et la mettre dans une variable
+const dataLocalStorage = localStorage.getItem("formulaireValues")
+
+//Convertir la chaine de caractères en objet javascript
+const dataLocalStorageObjet = JSON.parse(dataLocalStorage)
+
+//Fonction pour que le champ du formulaire soit rempli par les données du localStorage si elle existe
+function remplirChampInputDepuisLocalStorage(input) {
+    document.querySelector(`#${input}`).value = dataLocalStorageObjet[input]
+}
+
+remplirChampInputDepuisLocalStorage("prenom")
+remplirChampInputDepuisLocalStorage("nom")
+remplirChampInputDepuisLocalStorage("adresse")
+remplirChampInputDepuisLocalStorage("ville")
+remplirChampInputDepuisLocalStorage("codePostal")
+remplirChampInputDepuisLocalStorage("email")
