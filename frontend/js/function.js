@@ -68,6 +68,7 @@ function displayProduct(products) {
         let prix = document.getElementById("prix")
         let btn = document.getElementById("btn-panier")
         let select = document.getElementById("select_color")
+        let quantity = document.getElementById("product-quantity")
 
         /*
          * On rend notre HTML dynamique, il récupère donc les informations des produits
@@ -84,6 +85,15 @@ function displayProduct(products) {
             select.add(select_option)
         }
 
+        //Choisir la quantité de produit possible
+        for (var q = 0; q < 5; q++) {
+            var select_option = document.createElement("option")
+            select_option.text = q + 1
+            select_option.value = q + 1
+            quantity.add(select_option)
+        }
+
+
         //Affichage du prix et de l'image ainsi que du bouton d'ajout au panier
         prix.textContent = "Prix: " + produit.price + " €";
         image.src = produit.imageUrl;
@@ -95,8 +105,11 @@ function displayProduct(products) {
         //---------------- Gestion du panier ----------------//
         //La récupération des données sélectionnées par l'utilisateur et envoie du panier
 
-        //Sélection de l'id du formulaire
+        //Sélection de l'id du formulaire des couleurs
         const idForm = document.querySelector("#select_color")
+
+        //Sélection de l'id du formulaire des quantités
+        const idFormQuantity = document.querySelector("#product-quantity")
 
         //Envoyer le panier
         btn.addEventListener('click', (e) => {
@@ -105,13 +118,16 @@ function displayProduct(products) {
             //Mettre la couleur que l'utilisateur a choisi dans une variable
             const choiceColor = idForm.value
 
+            //Mettre la quantité que l'utilisateur a choisie dans une variable
+            const choiceQuantity = idFormQuantity.value
+
             //Récupération des valeurs du formulaire
             let optionProduct = {
                 id_Product: produit._id,
                 nameProduct: produit.name,
                 select_color: choiceColor,
-                quantite: 1,
-                prix: produit.price
+                quantite: choiceQuantity,
+                prix: produit.price * choiceQuantity
             }
 
 

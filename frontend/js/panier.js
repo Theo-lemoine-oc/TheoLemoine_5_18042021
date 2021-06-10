@@ -23,7 +23,7 @@ if (produitEnregistreDansLocalStorage === null || produitEnregistreDansLocalStor
     for (b = 0; b < produitEnregistreDansLocalStorage.length; b++) {
         basketStructure = basketStructure + `
         <div class="content d-flex justify-content-between">
-            <p>${produitEnregistreDansLocalStorage[b].nameProduct} (1) | Couleur : ${produitEnregistreDansLocalStorage[b].select_color}</p>
+            <p>${produitEnregistreDansLocalStorage[b].nameProduct} (${produitEnregistreDansLocalStorage[b].quantite}) | Couleur : ${produitEnregistreDansLocalStorage[b].select_color}</p>
             <p>${produitEnregistreDansLocalStorage[b].prix} € <button class="product-delete"><i class="fas fa-trash-alt text-danger"></i></button</p>
         </div>
         `
