@@ -185,15 +185,20 @@ const btnEnvoyerFormulaire = document.querySelector("#sendForm")
 btnEnvoyerFormulaire.addEventListener('click', (e) => {
     e.preventDefault()
 
-    //Récupération des values du formulaire
-    const formulaireValues = {
-        prenom: document.querySelector("#prenom").value,
-        nom: document.querySelector("#nom").value,
-        adresse: document.querySelector("#adresse").value,
-        ville: document.querySelector("#ville").value,
-        codePostal: document.querySelector("#codePostal").value,
-        email: document.querySelector("#email").value
+    //Création d'une classe pour fabriquer l'objet dans lequel iront les values du formulaire
+    class Formulaire {
+        constructor() {
+            this.prenom = document.querySelector("#prenom").value
+            this.nom = document.querySelector("#nom").value
+            this.adresse = document.querySelector("#adresse").value
+            this.ville = document.querySelector("#ville").value
+            this.codePostal = document.querySelector("#codePostal").value
+            this.email = document.querySelector("#email").value
+        }
     }
+
+    //Appel de l'instance de la classe Formulaire pour créer l'objet formulaireValues
+    const formulaireValues = new Formulaire()
 
     //Mettre l'objet "formulaireValues" dans le localStorage
     localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues))
