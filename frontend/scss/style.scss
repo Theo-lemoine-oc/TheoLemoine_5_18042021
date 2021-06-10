@@ -226,3 +226,36 @@ footer {
         }
     }
 }
+
+
+/* FORM */
+
+.form-command {
+    text-align: center;
+    h2 {
+        font-size: 1.5rem;
+        margin: 2rem 0;
+    }
+    input {
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        border: none;
+        padding: .2rem;
+        background-color: #eeeeee;
+        outline: none;
+        text-align: center;
+    }
+    button {
+        background: linear-gradient(180deg, rgba(143, 91, 254, 1) 0%, rgba(143, 91, 254, 1) 50%, rgba(175, 91, 254, 1) 100%);
+        border: none;
+        padding: .5rem 1rem;
+        border-radius: 5px;
+        margin: 2rem auto;
+        color: #fff;
+        text-transform: uppercase;
+        transition: all .2s;
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}

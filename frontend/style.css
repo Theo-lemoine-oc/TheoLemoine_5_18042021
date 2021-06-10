@@ -202,4 +202,35 @@ footer p {
   color: #4601d8;
 }
 
+/* FORM */
+.form-command {
+  text-align: center;
+}
+.form-command h2 {
+  font-size: 1.5rem;
+  margin: 2rem 0;
+}
+.form-command input {
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: none;
+  padding: 0.2rem;
+  background-color: #eeeeee;
+  outline: none;
+  text-align: center;
+}
+.form-command button {
+  background: linear-gradient(180deg, #8f5bfe 0%, #8f5bfe 50%, #af5bfe 100%);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin: 2rem auto;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.form-command button:hover {
+  transform: scale(1.05);
+}
+
 /*# sourceMappingURL=style.css.map */
