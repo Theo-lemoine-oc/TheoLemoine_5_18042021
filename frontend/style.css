@@ -232,5 +232,10 @@ footer p {
 .form-command button:hover {
   transform: scale(1.05);
 }
+.form-command .wrong-value {
+  display: block;
+  margin-top: -0.8rem;
+  margin-bottom: 1rem;
+}
 
 /*# sourceMappingURL=style.css.map */

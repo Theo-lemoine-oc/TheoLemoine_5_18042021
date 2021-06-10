@@ -147,21 +147,27 @@ const afficherFormulaireHtml = () => {
                 <form>
                     <label for="prenom" class="d-flex flex-column">Prénom</label>
                     <input type="text" id="prenom" name="prenom" required>
+                    <span id="prenomManquant" class="wrong-value text-danger"></span>
 
                     <label for="nom" class="d-flex flex-column">Nom</label>
                     <input type="text" id="nom" name="nom" required>
+                    <span id="nomManquant" class="wrong-value text-danger"></span>
 
                     <label for="adresse" class="d-flex flex-column">Adresse</label>
                     <input type="text" id="adresse" name="adresse" required>
+                    <span id="adresseManquant" class="wrong-value text-danger"></span>
 
                     <label for="ville" class="d-flex flex-column">Ville</label>
                     <input type="text" id="ville" name="ville" required>
+                    <span id="villeManquant" class="wrong-value text-danger"></span>
 
                     <label for="codePostal" class="d-flex flex-column">Code postal</label>
                     <input type="text" id="codePostal" name="codePostal" required>
+                    <span id="codePostalManquant" class="wrong-value text-danger"></span>
 
                     <label for="email" class="d-flex flex-column">E-mail</label>
                     <input type="text" id="email" name="email" required>
+                    <span id="emailManquant" class="wrong-value text-danger"></span>
 
                     <button id="sendForm" type="submit" name="sendForm" class="d-flex flex-column">
                         Confirmation de la commande
@@ -227,12 +233,28 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
         return /^[A-Za-z0-9\s-éè]{5,50}$/.test(value)
     }
 
+    //Fonction qui affiche un message d'erreur sous le champ ayant un problème (version vide)
+    const dataChampManquantTextVide = (querySelectorId) => {
+        //Ajout du message d'erreur sur la champ ayant une erreur
+        document.querySelector(`#${querySelectorId}`).textContent = ""
+    }
+
+    //Fonction qui affiche un message d'erreur sous le champ ayant un problème (version pleine)
+    const dataChampManquant = (querySelectorId) => {
+        //Ajout du message d'erreur sur la champ ayant une erreur
+        document.querySelector(`#${querySelectorId}`).textContent = "Veuillez bien remplir ce champ"
+    }
+
+    ///////////////////////
+
     //Contrôle de la validité du prénom avec REGEX
     function prenomControle() {
         const lePrenom = formulaireValues.prenom
         if (regExPrenomNonVille(lePrenom)) {
+            dataChampManquantTextVide("prenomManquant")
             return true
         } else {
+            dataChampManquant("prenomManquant")
             alert(errorAlert("Prénom"))
             return false
         }
@@ -243,9 +265,24 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
         //Contrôle de la validité du nom avec REGEX
         const leNom = formulaireValues.nom
         if (regExPrenomNonVille(leNom)) {
+            dataChampManquantTextVide("nomManquant")
             return true
         } else {
+            dataChampManquant("nomManquant")
             alert(errorAlert("Nom"))
+            return false
+        }
+    }
+
+    //Contrôle de la validité de l'adresse avec REGEX
+    function adresseControle() {
+        const leAdresse = formulaireValues.adresse
+        if (regExAdresse(leAdresse)) {
+            dataChampManquantTextVide("adresseManquant")
+            return true
+        } else {
+            dataChampManquant("adresseManquant")
+            alert("L'adresse doit contenir que des lettres sans ponctuations et des chiffres !")
             return false
         }
     }
@@ -255,8 +292,10 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
         //Contrôle de la validité du nom avec REGEX
         const laVille = formulaireValues.ville
         if (regExPrenomNonVille(laVille)) {
+            dataChampManquantTextVide("villeManquant")
             return true
         } else {
+            dataChampManquant("villeManquant")
             alert(errorAlert("Ville"))
             return false
         }
@@ -267,8 +306,10 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     function codePostalControle() {
         const leCodePostal = formulaireValues.codePostal
         if (regExCodePostal(leCodePostal)) {
+            dataChampManquantTextVide("codePostalManquant")
             return true
         } else {
+            dataChampManquant("codePostalManquant")
             alert("Le code postal doit être composé de 5 chiffres !")
             return false
         }
@@ -278,33 +319,23 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     function emailControle() {
         const leEmail = formulaireValues.email
         if (regExEmail(leEmail)) {
+            dataChampManquantTextVide("emailManquant")
             return true
         } else {
+            dataChampManquant("emailManquant")
             alert("L'email n'est pas valide !")
             return false
         }
     }
 
-    //Contrôle de la validité de l'adresse avec REGEX
-    function adresseControle() {
-        const leAdresse = formulaireValues.adresse
-        if (regExAdresse(leAdresse)) {
-            return true
-        } else {
-            alert("L'adresse doit contenir que des lettres sans ponctuations et des chiffres !")
-            return false
-        }
-    }
-
     //Si le champ est valide selon le Regex : On envoie dans le localStorage
-    if (prenomControle() && nomControle() && villeControle() && codePostalControle() && emailControle() && adresseControle()) {
+    if (prenomControle() && nomControle() && adresseControle() && villeControle() && codePostalControle() && emailControle()) {
         //Mettre l'objet "formulaireValues" dans le localStorage
         localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues))
     }
     //Sinon on envoie pas et informe l'utilisateur
     else {
         alert("Veuillez bien remplir le formulaire !")
-        window.location.href = "../pages/panier.html"
     }
     //--------------- Fin de la gestion de la validation du formulaire ---------------//
 
