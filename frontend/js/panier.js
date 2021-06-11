@@ -215,7 +215,7 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
 
     //Regex pour controler le prénom, le nom et la ville
     const regExPrenomNonVille = (value) => {
-        return /^[A-Za-zéèöô]{3,40}$/.test(value)
+        return /^([A-Za-zéèöô]{3,40}?([-]{0,1}))?([A-Za-zéèöô]{3,40})$/.test(value)
     }
 
     //Regex pour controler le code postale
@@ -347,7 +347,42 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     }
 
     //Envoie de l'objet "aEnvoyer" vers le serveur
+    const promise01 = fetch("http://localhost:3000/api/teddies/order", {
+        method: "POST",
+        body: JSON.stringify(aEnvoyer),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
 
+    //Voir le résultat du serveur dans la console
+    promise01.then(async(response) => {
+        try {
+            console.log("response")
+            console.log(response)
+
+            const contenu = await response.json()
+            console.log("contenu")
+            console.log(contenu)
+        } catch (e) {
+            console.log(e)
+        }
+    })
+
+    //Pour voir ce qu'il a réellement sur le serveur
+    const promise02 = fetch("http://localhost:3000/api/teddies/order")
+    promise02.then(async(response) => {
+        try {
+            console.log("promise02")
+            console.log(promise02)
+
+            const donneesSurServeur = await response.json()
+            console.log("donneesSurServeur")
+            console.log(donneesSurServeur)
+        } catch (e) {
+            console.log(e)
+        }
+    })
 })
 
 //---------------- Mettre le contenu du localStorage dans les champs du formulaire ----------------//
@@ -359,7 +394,11 @@ const dataLocalStorageObjet = JSON.parse(dataLocalStorage)
 
 //Fonction pour que le champ du formulaire soit rempli par les données du localStorage si elle existe
 function remplirChampInputDepuisLocalStorage(input) {
-    document.querySelector(`#${input}`).value = dataLocalStorageObjet[input]
+    if (dataLocalStorageObjet == null) {
+
+    } else {
+        document.querySelector(`#${input}`).value = dataLocalStorageObjet[input]
+    }
 }
 
 remplirChampInputDepuisLocalStorage("prenom")
