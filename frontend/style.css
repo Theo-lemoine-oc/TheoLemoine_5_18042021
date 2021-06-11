@@ -23,6 +23,7 @@ h1::after {
 /*************/
 /* HEADER */
 header {
+  padding: 0 2rem;
   background-color: #f3e9f1;
 }
 header nav img {
@@ -30,9 +31,27 @@ header nav img {
   width: 10rem;
 }
 header nav a {
+  padding: 0;
   color: #8f5bfe;
 }
 
+@media only screen and (max-width: 768px) {
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  nav .navbar-nav {
+    display: flex;
+    flex-direction: row;
+  }
+  nav .navbar-nav li {
+    margin-right: 4rem;
+  }
+  nav .navbar-nav li:last-child {
+    margin-right: 0;
+  }
+}
 /* FOOTER */
 footer {
   background-color: #f3e9f1;
@@ -104,6 +123,20 @@ footer p {
   transition: 0.2s;
 }
 
+@media (max-width: 816px) {
+  .page-content #container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .page-content #container .carte {
+    width: 90%;
+  }
+}
+@media (max-width: 500px) {
+  .page-content #container .carte .content .bottom-carte {
+    flex-direction: column;
+  }
+}
 /* PAGE CONTENT PRODUCT PAGE */
 .product-content {
   display: flex;
