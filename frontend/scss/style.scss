@@ -266,6 +266,22 @@ footer {
 }
 
 
+/* CONFIRMATION CONTENT */
+
+.confirmation-content {
+    margin-bottom: 6rem;
+    h1 {
+        margin: 0 auto 2rem auto;
+    }
+    h1::after {
+        margin-top: .5rem;
+    }
+    h2 {
+        text-align: center;
+    }
+}
+
+
 /* MEDIAS QUERIES FOR RESPONSIVE */
 
 @media (max-width: 1280px) {

@@ -61,6 +61,9 @@ function displayProducts(products) {
 //Fonction permettant d'afficher les produits dans le HTML || Page Produit
 function displayProduct(products) {
     products.forEach(function(produit) {
+        //On change le titre de la page dynamiquement
+        document.title = `Orinoco - ${produit.name}`
+
         //On récupère les éléments HTML grâce à leur ID
         let image = document.getElementById("image")
         let titre = document.getElementById("titre")
