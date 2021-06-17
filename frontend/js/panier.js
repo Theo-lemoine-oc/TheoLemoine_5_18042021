@@ -309,45 +309,42 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     if (prenomControle() && nomControle() && adresseControle() && villeControle() && emailControle()) {
         //Mettre l'objet "contact" dans le localStorage
         localStorage.setItem("contact", JSON.stringify(contact))
+
+
+        //--------------- Fin de la gestion de la validation du formulaire ---------------//
+
+        //Récupérer l'ID de tous les produits
+        const map = products.map(p => p.id_Product)
+
+        //Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer vers le serveur
+        const aEnvoyer = {
+            products: map,
+            contact
+        }
+
+        //Envoie de l'objet "contact" vers le serveur
+        const promise01 = fetch("http://localhost:3000/api/teddies/order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(aEnvoyer)
+        })
+
+        //Voir le résultat du serveur dans la console
+        promise01.then(async(response) => {
+            try {
+                const contenu = await response.json()
+                console.log(contenu)
+            } catch (e) {
+                alert(`Erreur qui vient du catch() ! -> ${e}`)
+            }
+        })
     }
     //Sinon on envoie pas et informe l'utilisateur
     else {
         alert("Veuillez bien remplir le formulaire !")
     }
-    //--------------- Fin de la gestion de la validation du formulaire ---------------//
-
-    //Récupérer l'ID de tous les produits
-    const map = products.map(p => p.id_Product)
-
-    //Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer vers le serveur
-    const aEnvoyer = {
-        products: map,
-        contact
-    }
-    console.log(JSON.stringify(aEnvoyer))
-
-    //Envoie de l'objet "contact" vers le serveur
-    const promise01 = fetch("http://localhost:3000/api/teddies/order", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(aEnvoyer)
-    })
-
-    //Voir le résultat du serveur dans la console
-    promise01.then(async(response) => {
-        try {
-            console.log("response")
-            console.log(response)
-
-            const contenu = await response.json()
-            console.log("contenu")
-            console.log(contenu)
-        } catch (e) {
-            console.log(e)
-        }
-    })
 })
 
 //---------------- Mettre le contenu du localStorage dans les champs du formulaire ----------------//
@@ -371,3 +368,9 @@ remplirChampInputDepuisLocalStorage("lastName")
 remplirChampInputDepuisLocalStorage("address")
 remplirChampInputDepuisLocalStorage("city")
 remplirChampInputDepuisLocalStorage("email")
+
+
+
+
+
+//---------------- Page de la confirmation de la commande ----------------//
