@@ -269,7 +269,6 @@ footer {
 /* CONFIRMATION CONTENT */
 
 .confirmation-content {
-    margin-bottom: 6rem;
     h1 {
         margin: 0 auto 2rem auto;
     }
@@ -278,6 +277,33 @@ footer {
     }
     h2 {
         text-align: center;
+    }
+    #recapitulation {
+        width: 50%;
+        margin: 4rem auto;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 15px 0 #e2e2e2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h3 {
+            font-size: 1.3rem;
+        }
+        span {
+            font-weight: 700;
+        }
+        ul {
+            padding-left: 0;
+            margin-bottom: 2rem;
+            li {
+                list-style: none;
+                text-align: center;
+            }
+        }
+        p:last-child {
+            margin-bottom: 0;
+        }
     }
 }
 

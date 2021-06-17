@@ -309,6 +309,7 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     if (prenomControle() && nomControle() && adresseControle() && villeControle() && emailControle()) {
         //Mettre l'objet "contact" dans le localStorage
         localStorage.setItem("contact", JSON.stringify(contact))
+        localStorage.setItem("totalPrice", JSON.stringify(totalPrice))
 
 
         //--------------- Fin de la gestion de la validation du formulaire ---------------//
@@ -322,7 +323,7 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
             contact
         }
 
-        //Envoie de l'objet "contact" vers le serveur
+        //Envoie de l'objet "aEnvoyer" vers le serveur
         const promise01 = fetch("http://localhost:3000/api/teddies/order", {
             method: "POST",
             headers: {
@@ -336,6 +337,16 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
             try {
                 const contenu = await response.json()
                 console.log(contenu)
+
+                if (response.ok) {
+                    //Mettre l'ID de la commande que le serveur nous a retourné dans le localStorage
+                    localStorage.setItem("responseId", contenu.orderId)
+
+                    //Rediriger l'utilisateur vers la page de confirmation
+                    window.location = "../pages/confirmation.html"
+                } else {
+                    console.log(response.status)
+                }
             } catch (e) {
                 alert(`Erreur qui vient du catch() ! -> ${e}`)
             }
@@ -368,9 +379,3 @@ remplirChampInputDepuisLocalStorage("lastName")
 remplirChampInputDepuisLocalStorage("address")
 remplirChampInputDepuisLocalStorage("city")
 remplirChampInputDepuisLocalStorage("email")
-
-
-
-
-
-//---------------- Page de la confirmation de la commande ----------------//

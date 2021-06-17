@@ -239,9 +239,6 @@ footer p {
 }
 
 /* CONFIRMATION CONTENT */
-.confirmation-content {
-  margin-bottom: 6rem;
-}
 .confirmation-content h1 {
   margin: 0 auto 2rem auto;
 }
@@ -250,6 +247,33 @@ footer p {
 }
 .confirmation-content h2 {
   text-align: center;
+}
+.confirmation-content #recapitulation {
+  width: 50%;
+  margin: 4rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 0 #e2e2e2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.confirmation-content #recapitulation h3 {
+  font-size: 1.3rem;
+}
+.confirmation-content #recapitulation span {
+  font-weight: 700;
+}
+.confirmation-content #recapitulation ul {
+  padding-left: 0;
+  margin-bottom: 2rem;
+}
+.confirmation-content #recapitulation ul li {
+  list-style: none;
+  text-align: center;
+}
+.confirmation-content #recapitulation p:last-child {
+  margin-bottom: 0;
 }
 
 /* MEDIAS QUERIES FOR RESPONSIVE */
