@@ -241,9 +241,12 @@ footer p {
 /* CONFIRMATION CONTENT */
 .confirmation-content h1 {
   margin: 0 auto 2rem auto;
+  width: auto;
+  text-align: center;
 }
 .confirmation-content h1::after {
-  margin-top: 0.5rem;
+  margin: 0.5rem auto 0 auto;
+  width: 35%;
 }
 .confirmation-content h2 {
   text-align: center;
@@ -260,6 +263,14 @@ footer p {
 }
 .confirmation-content #recapitulation h3 {
   font-size: 1.3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.confirmation-content #recapitulation h3 span {
+  display: block;
+}
+.confirmation-content #recapitulation p {
+  text-align: center;
 }
 .confirmation-content #recapitulation span {
   font-weight: 700;
@@ -294,6 +305,11 @@ footer p {
   }
   .product-content .carte .content .bottom-carte {
     justify-content: space-evenly;
+  }
+}
+@media (max-width: 1024px) {
+  #recapitulation {
+    width: 75% !important;
   }
 }
 @media (max-width: 816px) {

@@ -271,9 +271,12 @@ footer {
 .confirmation-content {
     h1 {
         margin: 0 auto 2rem auto;
-    }
-    h1::after {
-        margin-top: .5rem;
+        width: auto;
+        text-align: center;
+        &::after {
+            margin: .5rem auto 0 auto;
+            width: 35%;
+        }
     }
     h2 {
         text-align: center;
@@ -289,6 +292,14 @@ footer {
         align-items: center;
         h3 {
             font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            span {
+                display: block;
+            }
+        }
+        p {
+            text-align: center;
         }
         span {
             font-weight: 700;
@@ -326,6 +337,12 @@ footer {
         .content .bottom-carte {
             justify-content: space-evenly;
         }
+    }
+}
+
+@media (max-width: 1024px) {
+    #recapitulation {
+        width: 75% !important;
     }
 }
 
