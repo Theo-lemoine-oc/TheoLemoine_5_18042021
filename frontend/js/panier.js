@@ -1,5 +1,5 @@
-//Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle nous mettons les keys et les values qui sont dans le local storage
-let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit"))
+//Déclaration de la variable "products" dans laquelle nous mettons les keys et les values qui sont dans le local storage
+let products = JSON.parse(localStorage.getItem("produit"))
     //JSON.parse pour convertir les données au format JSON qui sont dans le local storage en objet JavaScript
 
 
@@ -8,7 +8,7 @@ let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit
 const containerBasket = document.querySelector("#container")
 
 //Si le panier est vide : il faut afficher le panier est vide
-if (produitEnregistreDansLocalStorage === null || produitEnregistreDansLocalStorage == 0) {
+if (products === null || products == 0) {
     const emptyBasket = `
     <div class="container-empty-basket">
         <p>Votre panier est vide</p>
@@ -20,22 +20,22 @@ if (produitEnregistreDansLocalStorage === null || produitEnregistreDansLocalStor
     //Si le panier n'est pas vide : il faut afficher les produits dans le localStorage
     let basketStructure = []
 
-    for (b = 0; b < produitEnregistreDansLocalStorage.length; b++) {
+    for (b = 0; b < products.length; b++) {
         basketStructure = basketStructure + `
         <div class="content d-flex justify-content-between">
-            <p>${produitEnregistreDansLocalStorage[b].nameProduct} (${produitEnregistreDansLocalStorage[b].quantite}) | Couleur : ${produitEnregistreDansLocalStorage[b].select_color}</p>
-            <p class="product-right">${produitEnregistreDansLocalStorage[b].prix} € <button class="product-delete"><i class="fas fa-trash-alt text-danger"></i></button</p>
+            <p>${products[b].nameProduct} (${products[b].quantite}) | Couleur : ${products[b].select_color}</p>
+            <p class="product-right">${products[b].prix} € <button class="product-delete"><i class="fas fa-trash-alt text-danger"></i></button</p>
         </div>
         `
     }
-    if (b == produitEnregistreDansLocalStorage.length) {
+    if (b == products.length) {
         //Injection du HTML dans la page panier
         containerBasket.innerHTML = basketStructure
     }
 
     //Ajout du titre de la page des paniers indiquant le nombre de produits dans le panier
     basketTitle = document.getElementById("basket-title")
-    basketTitle.textContent = "Les produits que vous avez sélectionnez (" + produitEnregistreDansLocalStorage.length + ") :"
+    basketTitle.textContent = "Les produits que vous avez sélectionnez (" + products.length + ") :"
 }
 
 
@@ -49,19 +49,19 @@ for (let d = 0; d < btnDelete.length; d++) {
         e.preventDefault()
 
         //Sélection de l'ID du produit qui sera supprimé à chaque fois qu'un utilisateur appuie sur l'icone supprimer
-        let idDelete = produitEnregistreDansLocalStorage[d].id_Product
+        let idDelete = products[d].id_Product
 
         //Méthode filter pour sélectionner les éléments à garder et supprimer l'élément où le btn delete a été cliqué
-        produitEnregistreDansLocalStorage = produitEnregistreDansLocalStorage.filter(el => el.id_Product != idDelete)
+        products = products.filter(el => el.id_Product != idDelete)
 
         //S'il y a qu'un produit dans le panier, ça vide directement le panier, s'il y en a plus, ça supprime le produit sélectionné et non le sautres
-        if (produitEnregistreDansLocalStorage.length < 1) {
+        if (products.length < 1) {
             //Vider le panier
             localStorage.removeItem("produit")
         } else {
             //Envoie de la variable dans le localStorage  
             //Transformation en format JSON et l'envoyer dans la key "produit" du localStorage
-            localStorage.setItem("produit", JSON.stringify(produitEnregistreDansLocalStorage))
+            localStorage.setItem("produit", JSON.stringify(products))
         }
 
         //Alert pour avertir que le produit a été supprimé et rechargement de la page
@@ -92,7 +92,7 @@ productDeleteAll.addEventListener('click', (e) => {
     e.preventDefault()
 
     //Si le panier possède un ou plusieurs produits : On le vide quand l'utilisateur clique sur le bouton pour le vider
-    if (produitEnregistreDansLocalStorage) {
+    if (products) {
         //.removeItem pour vider le localStorage
         localStorage.removeItem("produit")
 
@@ -116,8 +116,8 @@ productDeleteAll.addEventListener('click', (e) => {
 let totalPriceCalcul = []
 
 //Aller chercher les prix dans le panier
-for (let t = 0; t < produitEnregistreDansLocalStorage.length; t++) {
-    let totalPriceBasket = produitEnregistreDansLocalStorage[t].prix
+for (let t = 0; t < products.length; t++) {
+    let totalPriceBasket = products[t].prix
 
     //Mettre les prix du panier dans la variable "totalPriceCalcul"
     totalPriceCalcul.push(totalPriceBasket)
@@ -145,25 +145,21 @@ const afficherFormulaireHtml = () => {
                 <h2>Remplissez le formulaire pour valider la commande</h2>
 
                 <form>
-                    <label for="prenom" class="d-flex flex-column">Prénom</label>
-                    <input type="text" id="prenom" name="prenom" required>
+                    <label for="firstName" class="d-flex flex-column">Prénom</label>
+                    <input type="text" id="firstName" name="firstName" required>
                     <span id="prenomManquant" class="wrong-value text-danger"></span>
 
-                    <label for="nom" class="d-flex flex-column">Nom</label>
-                    <input type="text" id="nom" name="nom" required>
+                    <label for="lastName" class="d-flex flex-column">Nom</label>
+                    <input type="text" id="lastName" name="lastName" required>
                     <span id="nomManquant" class="wrong-value text-danger"></span>
 
-                    <label for="adresse" class="d-flex flex-column">Adresse</label>
-                    <input type="text" id="adresse" name="adresse" required>
+                    <label for="address" class="d-flex flex-column">Adresse</label>
+                    <input type="text" id="address" name="address" required>
                     <span id="adresseManquant" class="wrong-value text-danger"></span>
 
-                    <label for="ville" class="d-flex flex-column">Ville</label>
-                    <input type="text" id="ville" name="ville" required>
+                    <label for="city" class="d-flex flex-column">Ville</label>
+                    <input type="text" id="city" name="city" required>
                     <span id="villeManquant" class="wrong-value text-danger"></span>
-
-                    <label for="codePostal" class="d-flex flex-column">Code postal</label>
-                    <input type="text" id="codePostal" name="codePostal" required>
-                    <span id="codePostalManquant" class="wrong-value text-danger"></span>
 
                     <label for="email" class="d-flex flex-column">E-mail</label>
                     <input type="text" id="email" name="email" required>
@@ -194,17 +190,16 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     //Création d'une classe pour fabriquer l'objet dans lequel iront les values du formulaire
     class Formulaire {
         constructor() {
-            this.prenom = document.querySelector("#prenom").value
-            this.nom = document.querySelector("#nom").value
-            this.adresse = document.querySelector("#adresse").value
-            this.ville = document.querySelector("#ville").value
-            this.codePostal = document.querySelector("#codePostal").value
+            this.firstName = document.querySelector("#firstName").value
+            this.lastName = document.querySelector("#lastName").value
+            this.address = document.querySelector("#address").value
+            this.city = document.querySelector("#city").value
             this.email = document.querySelector("#email").value
         }
     }
 
-    //Appel de l'instance de la classe Formulaire pour créer l'objet formulaireValues
-    const formulaireValues = new Formulaire()
+    //Appel de l'instance de la classe Formulaire pour créer l'objet contact
+    const contact = new Formulaire()
 
 
     //---------------- Gestion de la validation du formulaire ----------------//
@@ -216,11 +211,6 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     //Regex pour controler le prénom, le nom et la ville
     const regExPrenomNonVille = (value) => {
         return /^([A-Za-zéèöô]{3,40}?([-]{0,1}))?([A-Za-zéèöô]{3,40})$/.test(value)
-    }
-
-    //Regex pour controler le code postale
-    const regExCodePostal = (value) => {
-        return /^[0-9]{5}$/.test(value)
     }
 
     //Regex pour controler l'adresse E-mail
@@ -249,7 +239,7 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
 
     //Contrôle de la validité du prénom avec REGEX
     function prenomControle() {
-        const lePrenom = formulaireValues.prenom
+        const lePrenom = contact.firstName
         if (regExPrenomNonVille(lePrenom)) {
             dataChampManquantTextVide("prenomManquant")
             return true
@@ -263,7 +253,7 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     //Contrôle de la validité du nom avec REGEX
     function nomControle() {
         //Contrôle de la validité du nom avec REGEX
-        const leNom = formulaireValues.nom
+        const leNom = contact.lastName
         if (regExPrenomNonVille(leNom)) {
             dataChampManquantTextVide("nomManquant")
             return true
@@ -276,7 +266,7 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
 
     //Contrôle de la validité de l'adresse avec REGEX
     function adresseControle() {
-        const leAdresse = formulaireValues.adresse
+        const leAdresse = contact.address
         if (regExAdresse(leAdresse)) {
             dataChampManquantTextVide("adresseManquant")
             return true
@@ -290,7 +280,7 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     //Contrôle de la validité de la ville avec REGEX
     function villeControle() {
         //Contrôle de la validité du nom avec REGEX
-        const laVille = formulaireValues.ville
+        const laVille = contact.city
         if (regExPrenomNonVille(laVille)) {
             dataChampManquantTextVide("villeManquant")
             return true
@@ -302,22 +292,9 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     }
 
 
-    //Contrôle de la validité du code postale avec REGEX
-    function codePostalControle() {
-        const leCodePostal = formulaireValues.codePostal
-        if (regExCodePostal(leCodePostal)) {
-            dataChampManquantTextVide("codePostalManquant")
-            return true
-        } else {
-            dataChampManquant("codePostalManquant")
-            alert("Le code postal doit être composé de 5 chiffres !")
-            return false
-        }
-    }
-
     //Contrôle de la validité du mail avec REGEX
     function emailControle() {
-        const leEmail = formulaireValues.email
+        const leEmail = contact.email
         if (regExEmail(leEmail)) {
             dataChampManquantTextVide("emailManquant")
             return true
@@ -329,9 +306,9 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     }
 
     //Si le champ est valide selon le Regex : On envoie dans le localStorage
-    if (prenomControle() && nomControle() && adresseControle() && villeControle() && codePostalControle() && emailControle()) {
-        //Mettre l'objet "formulaireValues" dans le localStorage
-        localStorage.setItem("formulaireValues", JSON.stringify(formulaireValues))
+    if (prenomControle() && nomControle() && adresseControle() && villeControle() && emailControle()) {
+        //Mettre l'objet "contact" dans le localStorage
+        localStorage.setItem("contact", JSON.stringify(contact))
     }
     //Sinon on envoie pas et informe l'utilisateur
     else {
@@ -339,20 +316,23 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     }
     //--------------- Fin de la gestion de la validation du formulaire ---------------//
 
+    //Récupérer l'ID de tous les produits
+    const map = products.map(p => p.id_Product)
 
     //Mettre les values du formulaire et mettre les produits sélectionnés dans un objet à envoyer vers le serveur
     const aEnvoyer = {
-        produitEnregistreDansLocalStorage,
-        formulaireValues
+        products: map,
+        contact
     }
+    console.log(JSON.stringify(aEnvoyer))
 
-    //Envoie de l'objet "aEnvoyer" vers le serveur
+    //Envoie de l'objet "contact" vers le serveur
     const promise01 = fetch("http://localhost:3000/api/teddies/order", {
         method: "POST",
-        body: JSON.stringify(aEnvoyer),
         headers: {
             "Content-Type": "application/json"
-        }
+        },
+        body: JSON.stringify(aEnvoyer)
     })
 
     //Voir le résultat du serveur dans la console
@@ -368,26 +348,11 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
             console.log(e)
         }
     })
-
-    //Pour voir ce qu'il a réellement sur le serveur
-    const promise02 = fetch("http://localhost:3000/api/teddies/order")
-    promise02.then(async(response) => {
-        try {
-            console.log("promise02")
-            console.log(promise02)
-
-            const donneesSurServeur = await response.json()
-            console.log("donneesSurServeur")
-            console.log(donneesSurServeur)
-        } catch (e) {
-            console.log(e)
-        }
-    })
 })
 
 //---------------- Mettre le contenu du localStorage dans les champs du formulaire ----------------//
 //Prendre la key dans le localStorage et la mettre dans une variable
-const dataLocalStorage = localStorage.getItem("formulaireValues")
+const dataLocalStorage = localStorage.getItem("contact")
 
 //Convertir la chaine de caractères en objet javascript
 const dataLocalStorageObjet = JSON.parse(dataLocalStorage)
@@ -401,9 +366,8 @@ function remplirChampInputDepuisLocalStorage(input) {
     }
 }
 
-remplirChampInputDepuisLocalStorage("prenom")
-remplirChampInputDepuisLocalStorage("nom")
-remplirChampInputDepuisLocalStorage("adresse")
-remplirChampInputDepuisLocalStorage("ville")
-remplirChampInputDepuisLocalStorage("codePostal")
+remplirChampInputDepuisLocalStorage("firstName")
+remplirChampInputDepuisLocalStorage("lastName")
+remplirChampInputDepuisLocalStorage("address")
+remplirChampInputDepuisLocalStorage("city")
 remplirChampInputDepuisLocalStorage("email")

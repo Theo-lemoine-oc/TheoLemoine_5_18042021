@@ -134,17 +134,17 @@ function displayProduct(products) {
             //------------------ Le Local Storage ------------------//
             //Stocker la récupération des valeurs du formulaire dans le local storage
 
-            //Déclaration de la variable "produitEnregistreDansLocalStorage" dans laquelle nous mettons les keys et les values qui sont dans le local storage
-            let produitEnregistreDansLocalStorage = JSON.parse(localStorage.getItem("produit"))
+            //Déclaration de la variable "products" dans laquelle nous mettons les keys et les values qui sont dans le local storage
+            let products = JSON.parse(localStorage.getItem("produit"))
                 //JSON.parse pour convertir les données au format JSON qui sont dans le local storage en objet JavaScript
 
             //Fonction qui permet d'ajouter un produit sélectionné dans le localStorage
             const ajoutProduitLocalStorage = () => {
                 //Ajout dans le tableau de l'objet avec les values choisis par l'utilisateur
-                produitEnregistreDansLocalStorage.push(optionProduct)
+                products.push(optionProduct)
 
                 //Transformation en format JSON et l'envoyer dans la key "produit" du localStorage
-                localStorage.setItem("produit", JSON.stringify(produitEnregistreDansLocalStorage))
+                localStorage.setItem("produit", JSON.stringify(products))
             }
 
             //Fonction fenêtre pop up
@@ -160,13 +160,13 @@ Revenir à l'accueil : ANNULER`)) {
             }
 
             //S'il y'a déjà des produits enregistrés dans le localStorage
-            if (produitEnregistreDansLocalStorage) {
+            if (products) {
                 ajoutProduitLocalStorage()
                 popupConfirmation()
             }
             //S'il n'y a pas de produit d'enregistré dans le localStorage
             else {
-                produitEnregistreDansLocalStorage = []
+                products = []
                 ajoutProduitLocalStorage()
                 popupConfirmation()
             }

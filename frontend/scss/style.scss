@@ -48,24 +48,6 @@ header {
     }
 }
 
-@media only screen and (max-width: 768px) {
-    nav {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        .navbar-nav {
-            display: flex;
-            flex-direction: row;
-            li {
-                margin-right: 4rem;
-                &:last-child {
-                    margin-right: 0;
-                }
-            }
-        }
-    }
-}
-
 
 /* FOOTER */
 
@@ -141,22 +123,6 @@ footer {
     }
 }
 
-@media (max-width: 816px) {
-    .page-content #container {
-        flex-direction: column;
-        align-items: center;
-        .carte {
-            width: 90%;
-        }
-    }
-}
-
-@media (max-width: 500px) {
-    .page-content #container .carte .content .bottom-carte {
-        flex-direction: column;
-    }
-}
-
 
 /* PAGE CONTENT PRODUCT PAGE */
 
@@ -204,34 +170,6 @@ footer {
                 }
             }
         }
-    }
-}
-
-@media (max-width: 1280px) {
-    .product-content .carte {
-        overflow: hidden;
-        flex-direction: column;
-        margin: 0 2rem;
-        .content {
-            margin-top: 1rem;
-            margin-left: 0;
-        }
-        .content .bottom-carte {
-            justify-content: space-evenly;
-        }
-    }
-}
-
-@media (max-width: 500px) {
-    .product-content .carte img {
-        width: 30rem;
-    }
-    .bottom-carte {
-        flex-direction: column;
-    }
-    .product-content .carte .content form #select_color {
-        margin-left: 0;
-        margin-bottom: 1rem;
     }
 }
 
@@ -327,10 +265,69 @@ footer {
     }
 }
 
+
+/* MEDIAS QUERIES FOR RESPONSIVE */
+
 @media (max-width: 1280px) {
     .basket-content {
         width: auto;
         margin: 0 2rem;
+    }
+    .product-content .carte {
+        overflow: hidden;
+        flex-direction: column;
+        margin: 0 2rem;
+        .content {
+            margin-top: 1rem;
+            margin-left: 0;
+        }
+        .content .bottom-carte {
+            justify-content: space-evenly;
+        }
+    }
+}
+
+@media (max-width: 816px) {
+    .page-content #container {
+        flex-direction: column;
+        align-items: center;
+        .carte {
+            width: 90%;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    nav {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        .navbar-nav {
+            display: flex;
+            flex-direction: row;
+            li {
+                margin-right: 4rem;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .product-content .carte img {
+        width: 30rem;
+    }
+    .bottom-carte {
+        flex-direction: column;
+    }
+    .product-content .carte .content form #select_color {
+        margin-left: 0;
+        margin-bottom: 1rem;
+    }
+    .page-content #container .carte .content .bottom-carte {
+        flex-direction: column;
     }
 }
 
