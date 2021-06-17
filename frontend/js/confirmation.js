@@ -25,3 +25,12 @@ const structureConfirmationCommande = `
 
 //Injection de l'HTML dans la page
 container.insertAdjacentHTML("afterbegin", structureConfirmationCommande)
+
+
+//Effacer tout le localStorage sauf le formulaire
+function enleverCleLocalStorage(key) {
+    localStorage.removeItem(key)
+}
+
+enleverCleLocalStorage("produit")
+enleverCleLocalStorage("responseId")
