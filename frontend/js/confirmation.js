@@ -7,6 +7,12 @@ const Formulaire = localStorage.getItem("contact")
 //Convertir la chaine de caractères en objet javascript
 const formulaireContent = JSON.parse(Formulaire)
 
+//Prendre la key dans le localStorage et la mettre dans une variable
+const totalPriceAfficher = localStorage.getItem("totalPrice")
+
+//Convertir la chaine de caractères en objet javascript
+const totalPriceAfficher1 = JSON.parse(totalPriceAfficher)
+
 
 //---------- La structure HTML de la page confirmation.html ----------//
 //Sélection de l'élément du DOM pour le positionnement
@@ -20,6 +26,7 @@ const structureConfirmationCommande = `
         <li>${formulaireContent.address}, ${formulaireContent.city}</li>
         <li>${formulaireContent.email}</li>
     </ul>
+    <p>Le prix total est de <span>${totalPriceAfficher1}</span> €</p>
     <p>Au plasir de vous revoir !</p>
 `
 

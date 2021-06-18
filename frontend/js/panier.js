@@ -309,6 +309,7 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
     if (prenomControle() && nomControle() && adresseControle() && villeControle() && emailControle()) {
         //Mettre l'objet "contact" dans le localStorage
         localStorage.setItem("contact", JSON.stringify(contact))
+        localStorage.setItem("totalPrice", JSON.stringify(totalPrice))
 
 
         //--------------- Fin de la gestion de la validation du formulaire ---------------//
@@ -320,6 +321,7 @@ btnEnvoyerFormulaire.addEventListener('click', (e) => {
         const aEnvoyer = {
             products: map,
             contact,
+            totalPrice
         }
 
         //Envoie de l'objet "aEnvoyer" vers le serveur
